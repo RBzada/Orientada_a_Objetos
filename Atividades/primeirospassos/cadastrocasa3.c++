@@ -7,6 +7,28 @@ class casa{
 
     public:
 
+    // Método construtor
+    // Para que o objeto seja criado sem parâmetros, tendo o método construtor, deve-se 
+    // colocar os valores iguais a um valor
+    casa(int num = 0, int quar = 0, bool jar = 0){
+        if(num < 0){
+            numero = 0;
+        }
+        else{
+            numero  = num;
+        }
+
+        if(quar < 0){
+            quartos = 0;
+        }
+        else{
+            quartos  = quar;
+        }
+
+        jardim = jar;
+    }
+
+    // Função para exibir informações da casa
     void print_info(){
         std::cout << "Quantidade de quartos: " << quartos << std::endl;
         std::cout << "Jadim: " << jardim << std::endl;
@@ -56,29 +78,12 @@ class casa{
 
 
 int main(void){
+    // Sempre declarar o objeto com os parêmetros feitos no método construtor
+    // Pode-se omitir parâmetros dependendo da posição que está o "default"
+    // Não pode ter tipo casa(int quarto=0, int numero, bool jardim), pois o 
+    //compilador não sabe qual o valor que vai para cada campo
+    // Sempre colocar o valor padrão da direita para a esquerda
     casa minha_casa;
-    int num, quartos, jardim;
-
-
-    std::cout << "Digite o numero da casa: ";
-    std::cin >> num;
-    std::cout << "Digite a quatidade de quartos na casa: ";
-    std::cin >> quartos;
-    std::cout << "Digite se ha ou nao jardim: " ;
-    std::cin >> jardim;
-
-    minha_casa.set_numero(num);
-    minha_casa.set_quartos(quartos);
-    minha_casa.set_jardim(jardim);
-
-    std::cout << std::endl;
-    std::cout << "O numero de quartos na casa eh: " << minha_casa.get_quartos() << std::endl;
-    std::cout << "O jardim:  " << minha_casa.get_jardim() << std::endl;
-    std::cout << "O numero da casa eh: " << minha_casa.get_numero() << std::endl;
-
-
-    // Também é valido por print_info ser publico:
-    std::cout << std::endl;
     minha_casa.print_info();
 
     return 0;
